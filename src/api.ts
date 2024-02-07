@@ -21,7 +21,7 @@ function wait(delay: number) {
 // } 
 
 export async function getCherwood(): Promise<Cherwood[]> {
-  const apiUrl = 'http://127.0.0.1:8000/api/products/';
+  const apiUrl = 'https://cherwood-api.onrender.com/api/products/';
 
   return fetch(apiUrl)
     .then(response => {
@@ -45,7 +45,7 @@ export const LogOut = async (access) => {
       refresh: access,
     };
 
-    const url = 'http://127.0.0.1:8000/api/user/logout/'; 
+    const url = 'https://cherwood-api.onrender.com/api/user/logout/';
     await axios.post(url, data, {
       headers: {
         'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ export const LogOut = async (access) => {
 };
 
 export async function getChart(): Promise<CartItem> {
-  const apiUrl = 'http://127.0.0.1:8000/api/cart/';
+  const apiUrl = 'https://cherwood-api.onrender.com/api/cart/';
 
   return fetch(apiUrl)
     .then(response => {

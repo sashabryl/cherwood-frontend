@@ -91,7 +91,7 @@ export const OrderForm = () => {
       });
     } else {
       try {
-        const url = 'http://127.0.0.1:8000/api/order/create/';
+        const url = 'https://cherwood-api.onrender.com/api/order/create/';
     
         const orderData = {
           email: email,

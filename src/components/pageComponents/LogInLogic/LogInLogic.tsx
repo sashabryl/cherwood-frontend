@@ -63,7 +63,7 @@ export const LogInLogic = () => {
     event.preventDefault();
 
     try {
-      await axios.post('http://127.0.0.1:8000/api/user/login/', {
+      await axios.post('https://cherwood-api.onrender.com/api/user/login/', {
         email: values.email,
         password: values.password,
       })
