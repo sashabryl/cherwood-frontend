@@ -77,7 +77,7 @@ export async function getChart(): Promise<CartItem> {
 }
 
 export async function getUser(access): Promise<UserType> {
-  const apiUrl = 'http://127.0.0.1:8000/api/user/me/';
+  const apiUrl = 'https://cherwood-api.onrender.com/api/user/me/';
 
   const accessToken = access;
 
@@ -107,7 +107,7 @@ export async function getUser(access): Promise<UserType> {
 }
 
 export async function getBooking(access): Promise<BookingItem[]> {
-  const apiUrl = 'http://127.0.0.1:8000/api/user/orders/';
+  const apiUrl = 'https://cherwood-api.onrender.com/api/user/orders/';
 
   const accessToken = access;
 
@@ -153,7 +153,7 @@ export const handleChart = async (currentAction: string, id: number) => {
       action: currentAction,
     };
 
-    const url = 'http://127.0.0.1:8000/api/cart/';
+    const url = 'https://cherwood-api.onrender.com/api/cart/';
 
     await axios.post(url, data);
   } catch (error) {

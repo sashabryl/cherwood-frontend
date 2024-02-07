@@ -97,7 +97,7 @@ const handleChart = async () => {
       action: currentAction,
     };
 
-    const url = 'http://127.0.0.1:8000/api/cart/';
+    const url = 'https://cherwood-api.onrender.com/api/cart/';
 
     await axios.post(url, data);
 
