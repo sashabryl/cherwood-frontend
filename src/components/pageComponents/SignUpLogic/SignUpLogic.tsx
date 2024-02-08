@@ -90,7 +90,7 @@ export const SignUpLogic = () => {
       });
     } else {
       try {
-        await axios.post('https://cherwood-api.onrender.com/api/user/register/', {
+        await axios.post('https://cherwood-backend-cold-river-1843-quiet-breeze-3861.fly.dev/api/user/register/', {
           email: values.email,
           password: values.password,
           confirm_password: values.confirm_password,

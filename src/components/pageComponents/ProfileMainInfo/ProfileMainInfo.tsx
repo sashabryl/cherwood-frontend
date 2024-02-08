@@ -72,7 +72,7 @@ export const ProfileMainInfo:React.FC<Props> = ({noProfile}) => {
         }
       };
   
-      const url = 'https://cherwood-api.onrender.com/api/user/me/';
+      const url = 'https://cherwood-backend-cold-river-1843-quiet-breeze-3861.fly.dev/api/user/me/';
   
       const requestData = {
         first_name: firstName,

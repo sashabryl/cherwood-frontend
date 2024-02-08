@@ -63,7 +63,7 @@ export const LogInLogic = () => {
     event.preventDefault();
 
     try {
-      await axios.post('https://cherwood-api.onrender.com/api/user/login/', {
+      await axios.post('https://cherwood-backend-cold-river-1843-quiet-breeze-3861.fly.dev/api/user/login/', {
         email: values.email,
         password: values.password,
       })

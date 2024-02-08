@@ -91,7 +91,7 @@ export const OrderForm = () => {
       });
     } else {
       try {
-        const url = 'https://cherwood-api.onrender.com/api/order/create/';
+        const url = 'https://cherwood-backend-cold-river-1843-quiet-breeze-3861.fly.dev/api/order/create/';
     
         const orderData = {
           email: email,

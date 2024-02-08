@@ -97,7 +97,7 @@ const handleChart = async () => {
       action: currentAction,
     };
 
-    const url = 'https://cherwood-api.onrender.com/api/cart/';
+    const url = 'https://cherwood-backend-cold-river-1843-quiet-breeze-3861.fly.dev/api/cart/';
 
     await axios.post(url, data);
 

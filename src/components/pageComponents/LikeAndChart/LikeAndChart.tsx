@@ -54,7 +54,7 @@ useEffect(() => {
         }
       };
   
-      const url = `https://cherwood-api.onrender.com/api/products/${id}/favourite/`;
+      const url = `https://cherwood-backend-cold-river-1843-quiet-breeze-3861.fly.dev/api/products/${id}/favourite/`;
       await axios.post(url, null, config);
       setIsLike(!isLike)
     } catch (error) {
@@ -71,7 +71,7 @@ const handleChart = async () => {
       action: currentAction,
     };
 
-    const url = 'https://cherwood-api.onrender.com/api/cart/';
+    const url = 'https://cherwood-backend-cold-river-1843-quiet-breeze-3861.fly.dev/api/cart/';
 
     await axios.post(url, data);
 

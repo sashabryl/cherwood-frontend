@@ -21,7 +21,7 @@ function wait(delay: number) {
 // } 
 
 export async function getCherwood(): Promise<Cherwood[]> {
-  const apiUrl = 'https://cherwood-api.onrender.com/api/products/';
+  const apiUrl = 'https://cherwood-backend-cold-river-1843-quiet-breeze-3861.fly.dev/api/products/';
 
   return fetch(apiUrl)
     .then(response => {
@@ -45,7 +45,7 @@ export const LogOut = async (access) => {
       refresh: access,
     };
 
-    const url = 'https://cherwood-api.onrender.com/api/user/logout/';
+    const url = 'https://cherwood-backend-cold-river-1843-quiet-breeze-3861.fly.dev/api/user/logout/';
     await axios.post(url, data, {
       headers: {
         'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ export const LogOut = async (access) => {
 };
 
 export async function getChart(): Promise<CartItem> {
-  const apiUrl = 'https://cherwood-api.onrender.com/api/cart/';
+  const apiUrl = 'https://cherwood-backend-cold-river-1843-quiet-breeze-3861.fly.dev/api/cart/';
 
   return fetch(apiUrl)
     .then(response => {
@@ -77,7 +77,7 @@ export async function getChart(): Promise<CartItem> {
 }
 
 export async function getUser(access): Promise<UserType> {
-  const apiUrl = 'https://cherwood-api.onrender.com/api/user/me/';
+  const apiUrl = 'https://cherwood-backend-cold-river-1843-quiet-breeze-3861.fly.dev/api/user/me/';
 
   const accessToken = access;
 
@@ -107,7 +107,7 @@ export async function getUser(access): Promise<UserType> {
 }
 
 export async function getBooking(access): Promise<BookingItem[]> {
-  const apiUrl = 'https://cherwood-api.onrender.com/api/user/orders/';
+  const apiUrl = 'https://cherwood-backend-cold-river-1843-quiet-breeze-3861.fly.dev/api/user/orders/';
 
   const accessToken = access;
 
@@ -153,7 +153,7 @@ export const handleChart = async (currentAction: string, id: number) => {
       action: currentAction,
     };
 
-    const url = 'https://cherwood-api.onrender.com/api/cart/';
+    const url = 'https://cherwood-backend-cold-river-1843-quiet-breeze-3861.fly.dev/api/cart/';
 
     await axios.post(url, data);
   } catch (error) {
