@@ -4,7 +4,7 @@ import "./Modal.scss";
 import { BackButton } from "../BackButton/BackButton";
 import { Slide } from "react-slideshow-image";
 
-import innn from "../../../img/e547dbac650979a00cdb494fbc168463.jpg"
+// import innn from "../../../img/e547dbac650979a00cdb494fbc168463.jpg"
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
@@ -131,7 +131,7 @@ if (isInChart.products.length > 0) {
             {card.images.map((photo, index) => (
               <div key={index} className="each-slide">
                 <img 
-                  src={innn} 
+                  src={photo.image} 
                   className={`modal__slide`} 
                 />
               </div>

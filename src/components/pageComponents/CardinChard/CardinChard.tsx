@@ -64,7 +64,7 @@ const inChart = chart.products.find((product) => product.id === card.id);
     <div className="cardinChard">
       <div className="cardinChard__headCont">
       <img 
-        src={img} 
+        src={card.main_image} 
         alt="cardImg" 
         className="cardinChard__img"
         onClick={hendlModal}

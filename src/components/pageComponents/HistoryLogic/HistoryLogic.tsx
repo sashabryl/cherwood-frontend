@@ -60,7 +60,7 @@ export const HistoryLogic = () => {
         filteredCherwood.map(card => (
           <div className="historyLogic__chard cardinChard" key={card.id}>
             <img 
-              src={img} 
+              src={card.main_image} 
               alt="cardImg" 
               className="cardinChard__img"
               onClick={hendlModal}

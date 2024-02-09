@@ -4,7 +4,7 @@ import "./Card.scss";
 import { Modal } from "../Modal/Modal";
 import { useAppSelector } from "../../../app/hooks";
 import { LikeAndChart } from "../LikeAndChart/LikeAndChart";
-import img from "../../../img/e547dbac650979a00cdb494fbc168463.jpg"
+// import img from "../../../img/e547dbac650979a00cdb494fbc168463.jpg"
 
 type Props = {
   cherwood: Cherwood,
@@ -24,7 +24,7 @@ export const Card: React.FC<Props> = ({ cherwood }) => {
         <div className="card__top">
           <img 
             className="card__img" 
-             src={img} 
+             src={cherwood.main_image} 
             alt="img" 
             onClick={hendlModal}
           />

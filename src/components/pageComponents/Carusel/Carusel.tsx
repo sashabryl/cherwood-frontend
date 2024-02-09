@@ -6,7 +6,6 @@ import 'react-slideshow-image/dist/styles.css';
 import { Cherwood } from '../../../helpers/Cherwood';
 import { getCherwood } from '../../../api';
 
-import imh from "../.././../img/homeee.jpg"
 import { useAppSelector } from '../../../app/hooks';
 import { Modal } from '../Modal/Modal';
 
@@ -72,7 +71,7 @@ export const CarouselOnPage = () => {
           {cherwood.map((photo) => (
             <div key={photo.id} className="each-slide">
               <img 
-                src={imh} 
+                src={photo.main_image} 
                 className={`carousel__slide`} 
                 alt={`Slide ${photo.id}`}
               />
