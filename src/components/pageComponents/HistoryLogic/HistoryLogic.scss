@@ -14,6 +14,66 @@
     gap: 20px
   }
 
+  &__name {
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+
+  }
+
+  &__text {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: $text2Color;
+    margin: 0;
+    margin-top: 32px;
+ 
+    @include onPhone {
+      font-family: Ahellya;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 16px;
+      letter-spacing: 0em;
+      text-align: left;
+      margin-top: 24px;
+    }
+  }
+
+  &__minicontainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+
+    @include onPhone {
+      margin-bottom: 22px;
+    }
+  }
+
+  &__count {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin: 32px 12px 0 0;
+    
+    @include onPhone {
+      font-family: Ahellya;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 16px;
+        margin: 24px 12px 0 0;
+    }
+  }
+
   &__header {
     font-size: 17px;
     font-style: normal;
@@ -32,21 +92,37 @@
   }
 
   &__chard {
-    max-height: 320px;
-    max-width: 636px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    align-items: center;
+    padding: 24px;
+
+    
+    @include onPhone {
+      padding: 12px;
+      margin: 0 16px;
+    }
+  }
+
+  &__img {
+    width: 300px;
+    height: 280px;
+    border-radius: 16px;
+    object-fit: cover;
+    cursor: pointer;
 
     @include onPhone {
-      max-height: inherit;
-      max-width: inherit;
+      width: 140px;
+      height: 140px;
     }
   }
 
   &__container {
-    padding: 50px 28px 50px 28px;
-
-    @include onPhone {
-      padding: 22px 12px 12px 12px;
-    }
+    width: 100%;
+    box-sizing: border-box;
   }
 
   &__empty {
@@ -84,5 +160,23 @@
       font-weight: 400;
       line-height: 120%;
     }
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 17px;
+  }
+
+  &__top2 {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__name2 {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0.01em;
   }
 }

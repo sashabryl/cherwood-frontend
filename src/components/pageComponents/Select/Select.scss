@@ -33,7 +33,7 @@
 
       @include onPhone {
         border-radius: 8px;
-        padding: 5px 6px;
+        padding: 5px 10px;
       }
     }
 
@@ -102,7 +102,7 @@
     line-height: 120%;
 
     @include onPhone {
-      font-size: 13px;
+      font-size: 15px;
       font-style: normal;
       font-weight: 400;
       line-height: 120%;
@@ -119,8 +119,8 @@
     background-image: url("../../../img/MiniArrow.svg");
     background-repeat: no-repeat;
     background-size: cover;
-    width: 15px;
-    height: 13px;
+    width: 20px;
+    height: 16px;
     border: none;
     background-color: transparent;
     cursor: pointer;
@@ -128,8 +128,8 @@
 
     &--target {
       background-image: url("../../../img/HowerArrow.svg");
-      width: 15px;
-      height: 3px;
+      width: 20px;
+      height: 5px;
     }
   }
 
@@ -149,7 +149,7 @@
     color: $text2Color;
 
     @include onPhone {
-      font-size: 11px;
+      font-size: 13px;
       font-style: normal;
       font-weight: 400;
       line-height: 130%; 
@@ -198,7 +198,7 @@
 
   &__checkbox {
     display: flex;
-    padding: 5px 0px;
+    padding: 15px 0px;
     align-items: center;
     flex-direction: row-reverse;
     justify-content: space-between;

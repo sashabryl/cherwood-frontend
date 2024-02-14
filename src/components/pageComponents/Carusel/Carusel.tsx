@@ -78,8 +78,8 @@ export const CarouselOnPage = () => {
 
               <button className='carousel__add' onClick={() => hendlModal(photo)}>
                 {languageReducer.language 
-                  ?('Add to cart +')
-                  :('Додати до кошика +')
+                  ?('Add to cart')
+                  :('Додати до кошика')
                 }
               </button>
             </div>

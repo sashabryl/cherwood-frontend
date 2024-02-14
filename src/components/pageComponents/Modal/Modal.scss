@@ -181,6 +181,7 @@
     font-weight: 400;
     line-height: 120%;
     color: $text2Color;
+    margin: 15px 0;
   }
 
   &__number {
@@ -325,10 +326,11 @@
     background-image: url("../../../img/RightArr.svg");
     background-size: contain;
     background-repeat: no-repeat;
+    margin: 0;
 
     @include onPhone {
-      width: 16px;
-      height: 16px;
+      width: 8px;
+      height: 14px;
     }
   }
 
