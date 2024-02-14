@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppSelector } from "../../../app/hooks";
 import { getBooking, getCherwood} from "../../../api";
 import { Modal } from "../Modal/Modal";
@@ -10,9 +10,7 @@ import { BookingItem } from "../../../helpers/BookingInterface";
 import { Cherwood } from "../../../helpers/Cherwood";
 
 export const HistoryLogic = () => {
-  const [cherwood, setCherwood] = useState<BookingItem[]>([{ id: 0, total: '', created_at: '', order_items: [
-    {product: 0, quantity: 0, calculate_total: 0}
-  ] }]);
+  const [cherwood, setCherwood] = useState<BookingItem[]>([{ id: 0, calculate_total: 0, get_date: '', product: 0, quantity: 0,}]);
   const [allcherwood, setAllCherwood] = useState<Cherwood[]>([]);
   const [isSelect, setIsSelect] = useState(false);
   const languageReducer = useAppSelector(state => state.language);
@@ -43,34 +41,20 @@ export const HistoryLogic = () => {
       });
   }, []);
 
-  const filteredCherwood = 
-    allcherwood.filter(item => {
-      return cherwood.some(cherwoodItem =>
-        cherwoodItem.order_items.some(order => order.product === item.id)
-      );
-    }).map(item => {
-      const matchingCherwoodItem = cherwood.find(cherwoodItem =>
-        cherwoodItem.order_items.some(order => order.product === item.id)
-      );
-
-      let total = 0;
-      let quantity = 0;
-  
-      if (matchingCherwoodItem) {
-        matchingCherwoodItem.order_items.forEach(order => {
-          total += order.calculate_total;
-          quantity += order.quantity;
-        });
-      }
+  const enrichedCherwood = allcherwood.length > 0 && cherwood.length > 0
+  ? allcherwood
+    .filter(item => cherwood.some(booking => booking.product === item.id))
+    .map(item => {
+      const booking = cherwood.find(booking => booking.product === item.id);
       
       return {
         ...item,
-        time: matchingCherwoodItem?.created_at,
-        total: total,
-        quantity: quantity
+        calculate_total: booking ? booking.calculate_total : 0,
+        get_date: booking ? booking.get_date : '',
+        quantity: booking ? booking.quantity : 0
       };
-    });
-
+    })
+  : [];
 
   return (
     <div className="historyLogic">
@@ -81,8 +65,8 @@ export const HistoryLogic = () => {
         }
       </h1>
 
-  {filteredCherwood.length > 0 ?
-        filteredCherwood.map(card => (
+  {enrichedCherwood.length > 0 ?
+        enrichedCherwood.map(card => (
           <div className="historyLogic__chard" key={card.id}>
             <img 
               src={card.main_image} 
@@ -96,7 +80,7 @@ export const HistoryLogic = () => {
                 <div className="historyLogic__count">
                   {languageReducer.language ? 'Was ordered:' : 'Було замовлено:'}
                 </div>
-                <p className="historyLogic__text">{card.time}</p>
+                <p className="historyLogic__text">{card.get_date}</p>
               </div>
 
               <div className="historyLogic__top">
@@ -152,7 +136,7 @@ export const HistoryLogic = () => {
                   </div>
 
                   <div className="historyLogic__name2">
-                    {`₴${card.total}`}
+                    {`₴${card.calculate_total}`}
                   </div>
               </div>
               </div>

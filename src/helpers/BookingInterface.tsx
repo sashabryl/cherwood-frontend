@@ -1,13 +1,7 @@
-type Arr = {
-  product: number; 
-  quantity: number;
-  calculate_total: number;
-
-}
-
 export interface BookingItem{
   id: number;
-  total: string;
-  created_at: string;
-  order_items: Arr[];
+  calculate_total: number;
+  get_date: string;
+  product: number;
+  quantity: number;
 }
