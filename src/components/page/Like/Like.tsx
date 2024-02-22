@@ -20,13 +20,11 @@ export const Like = () => {
   const favoriteCherwood = cherwood.filter(item => user?.favourites.includes(item.id));
 
 useEffect(() => {
-  getUser(registrationReducer.registration.access 
-    || registrationReducer.registration.refresh
-    )
+  getUser(registrationReducer.registration.access )
   .then((userFromServer) => {
     setUser(userFromServer)
   })
-}, [user?.favourites]);
+}, []);
 
 useEffect(() => {
   getCherwood()
@@ -77,7 +75,7 @@ useEffect(() => {
         />
         </div>
 
-       {user?.favourites
+       {user?.favourites.length !== 0
         ?(
           <div className="modal__items">
             {favoriteCherwood.map((item)=> (
