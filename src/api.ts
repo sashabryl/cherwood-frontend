@@ -85,7 +85,7 @@ export async function getUser(access: string): Promise<UserType | undefined> {
     if (jsonData.detail === 'Given token not valid for any token type') {
       const refreshToken = store.getState().registration.registration.refresh;
 
-      const refreshUrl = 'https://cherwood-backend-cold-river-1843-quiet-breeze-3861.fly.dev/api/user/token-refresh';
+      const refreshUrl = 'https://cherwood-backend-cold-river-1843-quiet-breeze-3861.fly.dev/api/user/token-refresh/';
 
       const refreshHeaders = {
         Authorization: `Bearer ${refreshToken}`,
@@ -105,7 +105,7 @@ export async function getUser(access: string): Promise<UserType | undefined> {
           return response.json();
         })
         .then((jsonData) => {
-          console.log(jsonData)
+          console.log(jsonData, 'jsonData')
           if (jsonData.detail === 'Token is invalid or expired') {
             const registrationState = store.getState().registration;
 
