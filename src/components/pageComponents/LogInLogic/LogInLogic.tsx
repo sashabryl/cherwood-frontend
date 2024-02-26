@@ -1,16 +1,15 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { useAppSelector } from "../../../app/hooks";
 import classNames from "classnames";
 import axios from "axios";
 import { useState } from "react";
 
 import "./LogInLogic.scss";
-import { addRegistrationAction } from "../../../app/slice/RegistrSlice";
 
 export const LogInLogic = () => {
+  const registrationState = useAppSelector((state) => state.registration);
   const languageReducer = useAppSelector((state) => state.language);
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
 
   const [values, setValues] = useState({
     email: '',
@@ -68,7 +67,8 @@ export const LogInLogic = () => {
         password: values.password,
       })
       .then(response => {
-        dispatch(addRegistrationAction({access: response.data.access, refresh: response.data.refresh}))
+        registrationState.registration.access = response.data.access;
+        registrationState.registration.refresh = response.data.refresh;
       })
    
       navigate('/');
