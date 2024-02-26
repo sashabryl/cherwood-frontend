@@ -21,14 +21,17 @@ export const HistoryLogic = () => {
   } 
  
   useEffect(() => {
-    getBooking( 
-       registrationReducer.registration.access)
-       .then((straviFromServer) => {
-        setCherwood(straviFromServer);
-      })
-      .catch((error) => {
-        console.error("Error fetching booking:", error);
-      });
+    const fetchData = async () => {
+      try {
+        const straviFromServer = await getBooking(registrationReducer.registration.access);
+        if (straviFromServer) {
+          setCherwood(straviFromServer);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
   }, []);
 
   useEffect(() => {

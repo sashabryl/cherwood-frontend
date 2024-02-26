@@ -4,14 +4,7 @@ import { UserType } from "./helpers/UserType";
 import { CartItem } from "./helpers/ChartInterface";
 import axios from "axios";
 import { BookingItem } from "./helpers/BookingInterface";
-
-// export async function getCherwood(): Promise<Cherwood[]> {
-//   return wait(500)
-//     .then(() => {
-//       const jsonData = cherwoodData as Cherwood[];
-//       return Promise.resolve(jsonData);
-//     });
-// } 
+import { store } from "./app/store";
 
 export async function getCherwood(): Promise<Cherwood[]> {
   const apiUrl = 'https://cherwood-backend-cold-river-1843-quiet-breeze-3861.fly.dev/api/products/';
@@ -38,15 +31,21 @@ export const LogOut = async (access) => {
       refresh: access,
     };
 
-    const url = 'https://cherwood-backend-cold-river-1843-quiet-breeze-3861.fly.dev/api/user/logout/';
+    const url = 'https://cherwood-backend-cold-river-1843-quiet-breeze-3861.fly.dev/api/user/logout/'; 
     await axios.post(url, data, {
       headers: {
         'Content-Type': 'application/json',
       },
     });
+
+    const registrationState = store.getState().registration;
+
+    registrationState.registration.access = '';
+    registrationState.registration.refresh = '';
+
     window.location.reload();
   } catch (error) {
-    console.log(error);
+    console.log(error, 'qerg');
   } 
 };
 
@@ -69,43 +68,75 @@ export async function getChart(): Promise<CartItem> {
     });
 }
 
-export async function getUser(access): Promise<UserType> {
+export async function getUser(access: string): Promise<UserType | undefined> {
   const apiUrl = 'https://cherwood-backend-cold-river-1843-quiet-breeze-3861.fly.dev/api/user/me/';
-
-  const accessToken = access;
-
   const headers = {
-    Authorization: `Bearer ${accessToken}`,
+    Authorize: `Bearer ${access}`,
   };
 
   const requestOptions: RequestInit = {
     method: 'GET',
     headers: new Headers(headers),
   };
+  try {
+    const response = await fetch(apiUrl, requestOptions);
+    const jsonData: UserType = await response.json();
 
-  return fetch(apiUrl, requestOptions)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`Failed to fetch data from ${apiUrl}`);
-      }
-      return response.json();
-    })
-    .then((jsonData: UserType) => {
-      return Promise.resolve(jsonData);
-    })
-    .catch(error => {
-      console.error(error);
-      return Promise.reject(error);
-    });
+    if (jsonData.detail === 'Given token not valid for any token type') {
+      const refreshToken = store.getState().registration.registration.refresh;
+
+      const refreshUrl = 'https://cherwood-backend-cold-river-1843-quiet-breeze-3861.fly.dev/api/user/token-refresh';
+
+      const refreshHeaders = {
+        Authorization: `Bearer ${refreshToken}`,
+      };
+
+      const refreshRequestOptions: RequestInit = {
+        method: 'POST',
+        headers: {
+          ...refreshHeaders,
+          'Content-Type': 'application/json', 
+        },
+        body: JSON.stringify({ refresh: refreshToken }),
+      };
+
+      return fetch(refreshUrl, refreshRequestOptions)
+        .then(response => {
+          return response.json();
+        })
+        .then((jsonData) => {
+          console.log(jsonData)
+          if (jsonData.detail === 'Token is invalid or expired') {
+            const registrationState = store.getState().registration;
+
+            console.log('Token is invalid or expired')
+
+            registrationState.registration.access = '';
+            registrationState.registration.refresh = '';
+            throw new Error('Token is invalid or expired');
+          } else {
+            const registrationState = store.getState().registration;
+            registrationState.registration.access = jsonData.access
+          }
+          return Promise.resolve(jsonData);
+        })
+        .catch(error => {
+          return undefined;
+        });
+    } 
+    return jsonData;
+  } catch (error: any) {
+    return undefined;
+  }
 }
 
-export async function getBooking(access): Promise<BookingItem[]> {
-  const apiUrl = 'https://cherwood-backend-cold-river-1843-quiet-breeze-3861.fly.dev/api/user/orders/';
+export async function getBooking(access): Promise<BookingItem[] | undefined> {
+  const apiUrl = 'https://cherwood-backend-cold-river-1843-quiet-breeze-3861.fly.dev/api/order/orders/';
 
   const accessToken = access;
 
   const headers = {
-    Authorization: `Bearer ${accessToken}`,
+    Authorize: `Bearer ${accessToken}`,
   };
 
   const requestOptions: RequestInit = {
@@ -121,15 +152,13 @@ export async function getBooking(access): Promise<BookingItem[]> {
       return response.json();
     })
     .then((jsonData: BookingItem[]) => {
-      return Promise.resolve(jsonData);
+      return jsonData;
     })
     .catch(error => {
       console.error(error);
-      return Promise.reject(error);
+      return undefined; 
     });
 }
-
-
 
 // export async function getOptions(): Promise<Option[]> {
 //   return wait(500)

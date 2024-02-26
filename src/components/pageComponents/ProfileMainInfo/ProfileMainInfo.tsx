@@ -54,7 +54,7 @@ export const ProfileMainInfo:React.FC<Props> = ({noProfile}) => {
         setUser(userFromServer)
       })
     }
-  }, [registrationReducer.registration.access]);
+  }, [registrationReducer.registration.access, registrationReducer.registration.refresh]);
 
   useEffect(() => {
     setFirstName(user?.first_name || '');

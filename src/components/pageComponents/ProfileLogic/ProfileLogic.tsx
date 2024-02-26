@@ -24,14 +24,14 @@ export const ProfileLogic: React.FC<Props> = ({profile}) => {
   const registrationReducer = useAppSelector(state => state.registration);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-
+  
   const handleLogOut = () => {
+    navigate('/')
     LogOut(registrationReducer.registration.access);
     dispatch(addRegistrationAction({
       access: '',
       refresh: '',
     }));
-    navigate('/')
   };
 
 

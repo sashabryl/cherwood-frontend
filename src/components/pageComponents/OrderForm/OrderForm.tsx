@@ -52,10 +52,8 @@ export const OrderForm = () => {
   };
 
   useEffect(() => {
-    if (registrationReducer.registration.access 
-      ) {
-      getUser(registrationReducer.registration.access 
-        )
+    if (registrationReducer.registration.access) {
+      getUser(registrationReducer.registration.access)
       .then((userFromServer) => {
         setUser(userFromServer)
       })
@@ -103,9 +101,7 @@ export const OrderForm = () => {
   
         if (registrationReducer.registration.access 
           )  {
-            const updatedUser = await getUser(
-              registrationReducer.registration.access
-            );
+            const updatedUser = await getUser(registrationReducer.registration.access);
             setUser(updatedUser);
           }
   

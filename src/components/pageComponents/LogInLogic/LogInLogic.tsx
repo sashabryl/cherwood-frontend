@@ -68,10 +68,7 @@ export const LogInLogic = () => {
         password: values.password,
       })
       .then(response => {
-        dispatch(addRegistrationAction({
-          access: response.data.access,
-          refresh: response.data.refresh,
-        }))
+        dispatch(addRegistrationAction({access: response.data.access, refresh: response.data.refresh}))
       })
    
       navigate('/');

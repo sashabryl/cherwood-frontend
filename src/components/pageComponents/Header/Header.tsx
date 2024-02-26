@@ -11,6 +11,7 @@ import { CartItem } from '../../../helpers/ChartInterface';
 
 export const Header = () => {
   const [isSelect, setIsSelect] = useState(false);
+  const [isSelect2, setIsSelect2] = useState(false);
   const [chart, setChart] = useState<CartItem>({ products: [], cart_total_price: 0 });
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -47,6 +48,19 @@ export const Header = () => {
       console.error(error);
     });
 }, [chartReload.chart]);
+
+useEffect(() => {
+if (registrationReducer.registration.access === undefined || registrationReducer.registration.access === '' ) {
+  setTimeout(() => {
+    setIsSelect2(false);
+  }, 1000);
+} else {
+  setTimeout(() => {
+    setIsSelect2(true);
+  }, 1000);
+}
+}, [registrationReducer.registration.access]);
+
 
     return (
     <div className="header">
@@ -118,7 +132,7 @@ export const Header = () => {
               </NavLink>
             </div>
 
-            {registrationReducer.registration.access && (
+            {isSelect2 === true && (
               <NavLink to="/favorites" className="header__favorites header__img" />
             )}
 

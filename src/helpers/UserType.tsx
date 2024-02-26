@@ -6,4 +6,5 @@ export interface UserType {
   tel_number: string;
   region: string;
   city: string;
+  detail?: string;
 }

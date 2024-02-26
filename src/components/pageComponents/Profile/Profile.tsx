@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import "./Profile.scss";
@@ -9,19 +9,31 @@ import { LogOut } from "../../../api";
 
 export const Profile = () => {
   const [isSelect, setIsSelect] = useState(false);
+  const [isSelect2, setIsSelect2] = useState(false);
   const languageReducer = useAppSelector(state => state.language);
   const registrationReducer = useAppSelector(state => state.registration);
   const dispatch = useAppDispatch();
 
-  const handleLogOut = async () => {
-    LogOut(registrationReducer.registration.access)
+  const handleLogOut = () => {
+    LogOut(registrationReducer.registration.access);
     dispatch(addRegistrationAction({
       access: '',
       refresh: '',
     }));
-
-    setIsSelect(false);
   };
+
+  useEffect(() => {
+    if (registrationReducer.registration.access === undefined || registrationReducer.registration.access === '') {
+      setTimeout(() => {
+        setIsSelect2(false);
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        setIsSelect2(true);
+      }, 1000);
+    }
+    }, [registrationReducer.registration.access]);
+
 
   return (
     <div className="profile__cont">
@@ -30,7 +42,7 @@ export const Profile = () => {
       onClick={() => setIsSelect(!isSelect)}
     >
     <div className={classNames("profile__profile profile__img", {
-        'profile__img2': registrationReducer.registration.access
+        'profile__img2': isSelect2 === true 
       })}/>
   </div>
 

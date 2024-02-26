@@ -86,7 +86,7 @@ if (isInChart.products.length > 0) {
     <div className="card__minicontainer">
       <button 
         className={classNames("card__notLike", {
-          'card__like': user && user.favourites.includes(id),
+          'card__like': user && user.favourites &&  user.favourites.includes(id),
           'card__noAbsolute' : noAbsolute,
         })} 
         onClick={handleLike}

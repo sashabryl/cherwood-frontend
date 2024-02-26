@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Cherwood } from "../../../helpers/Cherwood";
-import { BackButton } from "../../pageComponents/BackButton/BackButton"; 
+
 import { Header } from "../../pageComponents/Header/Header"; 
 import { Footer } from "../../pageComponents/Footer/Footer"; 
 import { getCherwood, getUser } from "../../../api";
@@ -20,10 +20,12 @@ export const Like = () => {
   const favoriteCherwood = cherwood.filter(item => user?.favourites.includes(item.id));
 
 useEffect(() => {
-  getUser(registrationReducer.registration.access )
-  .then((userFromServer) => {
-    setUser(userFromServer)
-  })
+  if (registrationReducer.registration.access ) {
+    getUser(registrationReducer.registration.access )
+    .then((userFromServer) => {
+      setUser(userFromServer)
+    })
+  }
 }, []);
 
 useEffect(() => {
