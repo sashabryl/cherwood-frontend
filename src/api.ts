@@ -71,7 +71,7 @@ export async function getChart(): Promise<CartItem> {
 export async function getUser(access: string): Promise<UserType | undefined> {
   const apiUrl = 'https://cherwood-backend-cold-river-1843-quiet-breeze-3861.fly.dev/api/user/me/';
   const headers = {
-    Authorize: `Bearer ${access}`,
+    Authorization: `Bearer ${access}`,
   };
 
   const requestOptions: RequestInit = {
@@ -136,7 +136,7 @@ export async function getBooking(access): Promise<BookingItem[] | undefined> {
   const accessToken = access;
 
   const headers = {
-    Authorize: `Bearer ${accessToken}`,
+    Authorization: `Bearer ${accessToken}`,
   };
 
   const requestOptions: RequestInit = {
