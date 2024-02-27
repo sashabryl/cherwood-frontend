@@ -22,7 +22,7 @@ export const LikeAndChart: React.FC<Props> = ({id, noAbsolute}) => {
 
 useEffect(() => {
   if (registrationReducer.registration.access ) {
-    getUser(registrationReducer.registration.access )
+    getUser(registrationReducer.registration.access, dispatch )
     .then((userFromServer) => {
       setUser(userFromServer)
     })

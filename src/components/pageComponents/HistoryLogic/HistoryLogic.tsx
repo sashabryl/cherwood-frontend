@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useAppSelector } from "../../../app/hooks";
 import { getBooking, getCherwood} from "../../../api";
 import { Modal } from "../Modal/Modal";
-import img from '../../../img/e547dbac650979a00cdb494fbc168463.jpg';
 
 import "./HistoryLogic.scss"
 import { NavLink } from "react-router-dom";

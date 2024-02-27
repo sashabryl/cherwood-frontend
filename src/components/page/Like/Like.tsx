@@ -5,7 +5,7 @@ import { Header } from "../../pageComponents/Header/Header";
 import { Footer } from "../../pageComponents/Footer/Footer"; 
 import { getCherwood, getUser } from "../../../api";
 import { Card } from "../../pageComponents/Card/Card";
-import { useAppSelector } from "../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { NavLink } from "react-router-dom";
 import { UserType } from "../../../helpers/UserType";
 
@@ -16,12 +16,13 @@ export const Like = () => {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const languageReducer = useAppSelector(state => state.language);
   const registrationReducer = useAppSelector(state => state.registration);
+  const dispatch = useAppDispatch();
 
   const favoriteCherwood = cherwood.filter(item => user?.favourites.includes(item.id));
 
 useEffect(() => {
   if (registrationReducer.registration.access ) {
-    getUser(registrationReducer.registration.access )
+    getUser(registrationReducer.registration.access,dispatch )
     .then((userFromServer) => {
       setUser(userFromServer)
     })

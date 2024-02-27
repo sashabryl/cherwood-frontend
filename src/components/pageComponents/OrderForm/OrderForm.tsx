@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useAppSelector } from "../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { UserType } from "../../../helpers/UserType";
 
 import "./OrderForm.scss";
@@ -13,13 +13,12 @@ export const OrderForm = () => {
   const languageReducer = useAppSelector(state => state.language);
   const registrationReducer = useAppSelector(state => state.registration);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const [user, setUser] = useState<UserType>();
   const [firstName, setFirstName] = useState<string | undefined>(user?.first_name || '');
   const [lastName, setLastName] = useState<string | undefined>(user?.last_name || '');
-  // const [country, setCountry] = useState<string | undefined>(user?.country || '');
   const [userCity, setCity] = useState<string | undefined>(user?.city || '');
-  // const [userRregion, setUserRegion] = useState<string | undefined>(user?.region || '');
   const [email, setEmail] = useState<string | undefined>(user?.email || '');
   const [telNumber, setTelNumber] = useState<string | undefined>(user?.tel_number || '');
   const [selectedRegion, setSelectedRegion] = useState(user?.email ||
@@ -53,7 +52,7 @@ export const OrderForm = () => {
 
   useEffect(() => {
     if (registrationReducer.registration.access) {
-      getUser(registrationReducer.registration.access)
+      getUser(registrationReducer.registration.access, dispatch)
       .then((userFromServer) => {
         setUser(userFromServer)
       })
@@ -101,7 +100,7 @@ export const OrderForm = () => {
   
         if (registrationReducer.registration.access 
           )  {
-            const updatedUser = await getUser(registrationReducer.registration.access);
+            const updatedUser = await getUser(registrationReducer.registration.access, dispatch);
             setUser(updatedUser);
           }
   
