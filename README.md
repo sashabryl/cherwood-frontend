@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+Mockup Link: [Design](https://www.figma.com/design/VqGYj9amahEKPpO2f4uOiC/Furniture)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Backend: [Link](https://github.com/sashabryl/cherwood-backend)
 
 ## Available Scripts
 
