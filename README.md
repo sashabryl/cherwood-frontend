@@ -1,8 +1,8 @@
-## Main information
+# Main information
 
-# Mockup Link: [Design](https://www.figma.com/design/VqGYj9amahEKPpO2f4uOiC/Furniture)
+### Mockup Link: [Design](https://www.figma.com/design/VqGYj9amahEKPpO2f4uOiC/Furniture)
 
-# Backend: [Link](https://github.com/sashabryl/cherwood-backend)
+### Backend: [Link](https://github.com/sashabryl/cherwood-backend)
 
 ### Description: Cherwood is an online store specializing in high-quality wood products. The front-end of the site is developed using TypeScript, React.js, combined with SASS (SCSS) modules for styling. The development process followed the Scrum methodology, ensuring an agile and collaborative approach. The site is connected to a robust backend, allowing dynamic interactions and seamless management of product data, orders, and customer interactions. The frontend efficiently communicates with the backend, providing users with a smooth and responsive shopping experience.
 
